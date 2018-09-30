@@ -15,7 +15,7 @@ after_success:
   - docker build -t resetbttnpushed/fibonacci-complicated-worker ./worker
   - docker build -t resetbttnpushed/fibonacci-complicated-nginx ./nginx
 
-  - docker "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
   - docker push resetbttnpushed/fibonacci-complicated-client
   - docker push resetbttnpushed/fibonacci-complicated-server
