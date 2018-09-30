@@ -1,0 +1,23 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run react-test npm test -- --coverage
+
+after_success:
+  - docker build -t resetbttnpushed/fibonacci-complicated-client ./client
+  - docker build -t resetbttnpushed/fibonacci-complicated-server ./server
+  - docker build -t resetbttnpushed/fibonacci-complicated-worker ./worker
+  - docker build -t resetbttnpushed/fibonacci-complicated-nginx ./nginx
+
+  - docker "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+  - docker push -t resetbttnpushed/fibonacci-complicated-client
+  - docker push -t resetbttnpushed/fibonacci-complicated-server
+  - docker push -t resetbttnpushed/fibonacci-complicated-worker
+  - docker push -t resetbttnpushed/fibonacci-complicated-nginx
