@@ -17,10 +17,10 @@ after_success:
 
   - docker "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-  - docker push -t resetbttnpushed/fibonacci-complicated-client
-  - docker push -t resetbttnpushed/fibonacci-complicated-server
-  - docker push -t resetbttnpushed/fibonacci-complicated-worker
-  - docker push -t resetbttnpushed/fibonacci-complicated-nginx
+  - docker push resetbttnpushed/fibonacci-complicated-client
+  - docker push resetbttnpushed/fibonacci-complicated-server
+  - docker push resetbttnpushed/fibonacci-complicated-worker
+  - docker push resetbttnpushed/fibonacci-complicated-nginx
 
 deploy:
   provider: elasticbeanstalk
