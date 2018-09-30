@@ -1,0 +1,22 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "Worker to calculate fibonacci number",
+  "main": "index.js",
+  "dependencies": {
+    "nodemon": "1.18.3",
+    "redis": "2.8.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "npm run test"
+  },
+  "keywords": [
+    "fibonacci",
+    "worker",
+    "nodejs"
+  ],
+  "author": "Brandon L.",
+  "license": "ISC"
+}
