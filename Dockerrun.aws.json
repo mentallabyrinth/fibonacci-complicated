@@ -1,0 +1,34 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "resetbttnpushed/fibonacci-complicated-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "resetbttnpushed/fibonacci-complicated-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "resetbttnpushed/fibonacci-complicated-worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "resetbttnpushed/fibonacci-complicated-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}

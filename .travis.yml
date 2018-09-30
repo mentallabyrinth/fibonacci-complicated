@@ -21,3 +21,16 @@ after_success:
   - docker push -t resetbttnpushed/fibonacci-complicated-server
   - docker push -t resetbttnpushed/fibonacci-complicated-worker
   - docker push -t resetbttnpushed/fibonacci-complicated-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: fibonacci-complicated
+  env: FibonacciComplicated-env
+  bucket_name: elasticbeanstalk-us-east-1-829246003395
+  bucket_path: fibonacci-complicated
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
